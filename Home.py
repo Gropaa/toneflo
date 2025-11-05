@@ -28,7 +28,7 @@ if st.session_state.logged_in:
     st.switch_page("pages/Main_App.py")
 
 # -------------------------------
-# Modern Aesthetic CSS (with Gradient Buttons)
+# Modern Aesthetic CSS (with Gradient Tabs & Buttons)
 # -------------------------------
 st.markdown("""
 <style>
@@ -61,6 +61,9 @@ body::before {
     100% { transform: rotate(360deg); }
 }
 
+/* -------------------------------
+   Header Section
+------------------------------- */
 .topbar {
     text-align: center;
     margin-top: -2rem;
@@ -85,16 +88,25 @@ body::before {
     opacity: 0.9;
 }
 
-/* Tabs Styling */
+/* -------------------------------
+   Tabs Styling
+------------------------------- */
 .stTabs [data-baseweb="tab-list"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 2.5rem !important;
+    gap: 2rem !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     margin: 0 auto 2.5rem !important;
+}
+
+/* Remove red underline or focus ring */
+.stTabs [data-baseweb="tab"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 .stTabs [data-baseweb="tab"] {
@@ -102,28 +114,44 @@ body::before {
     white-space: nowrap !important;
     font-weight: 600;
     font-size: 1.15rem;
-    color: white !important;
+    color: #e2e8f0 !important;
     border: none !important;
-    background: transparent !important;
-    border-radius: 0;
-    padding: 0.75rem 1.2rem;
-    border-bottom: 2px solid transparent;
-    transition: all 0.25s ease-in-out;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 14px;
+    padding: 0.75rem 1.6rem;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
+    box-shadow: none !important;
 }
 
+/* Hover styles */
 .stTabs [data-baseweb="tab"]:hover {
-    opacity: 0.85;
-    border-bottom: 2px solid rgba(255,255,255,0.5);
+    color: white !important;
+    background: linear-gradient(135deg, rgba(106,17,203,0.3), rgba(37,117,252,0.3)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(106,17,203,0.25);
 }
 
-.stTabs [aria-selected="true"] {
-    color: #ffffff !important;
-    border-bottom: 2px solid #ffffff !important;
-    font-weight: 700;
+/* Active tab (Login / Register) */
+.stTabs [aria-selected="true"]:nth-child(1) {
+    background: linear-gradient(135deg, #7e22ce, #5b21b6) !important; /* Purple tone for Login */
+    color: white !important;
+    box-shadow: 0 6px 25px rgba(126,34,206,0.5);
+    border: none !important;
+    outline: none !important;
 }
 
-/* Input Box Styling */
+.stTabs [aria-selected="true"]:nth-child(2) {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a) !important; /* Blue tone for Register */
+    color: white !important;
+    box-shadow: 0 6px 25px rgba(37,99,235,0.5);
+    border: none !important;
+    outline: none !important;
+}
+
+/* -------------------------------
+   Input Box Styling
+------------------------------- */
 .stTextInput > div > div {
     background: rgba(255,255,255,0.05);
     border-radius: 14px;
@@ -144,7 +172,9 @@ body::before {
     font-size: 0.95rem;
 }
 
-/* Gradient Buttons */
+/* -------------------------------
+   Gradient Buttons
+------------------------------- */
 .stButton button {
     border-radius: 14px;
     padding: 0.9rem 2rem;
@@ -163,7 +193,9 @@ body::before {
     box-shadow: 0 10px 25px rgba(106,17,203,0.4);
 }
 
-/* Footer */
+/* -------------------------------
+   Footer
+------------------------------- */
 .footer {
     text-align: center;
     color: #94a3b8;
@@ -181,7 +213,6 @@ body::before {
 st.markdown("""
 <div class="topbar">
     <h1>ToneFlo</h1>
-    <p>Because connection is a rhythm, not a script.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -207,7 +238,7 @@ with tab1:
                 })
                 st.session_state.logged_in = True
                 st.session_state.current_user = user.user.email
-                st.success(f"🎉 Welcome , {user.user.email}!")
+                st.success(f"🎉 Welcome, {user.user.email}!")
                 st.switch_page("pages/Main_App.py")
             except Exception as e:
                 st.error(f"❌ Login failed: {e}")
