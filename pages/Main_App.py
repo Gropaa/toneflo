@@ -404,18 +404,36 @@ st.markdown("""
 # --------------------------------
 st.markdown("### 💬 Need a Pickup Line?")
 style = st.selectbox("Choose your style:", ["Cheesy 😍", "Smooth Operator 😎", "Sigma 💪"], index=1)
+
 if st.button("✨ Generate Pickup Line", use_container_width=True):
     if "Cheesy" in style:
-        prompt = "Generate one short, funny, dramatic, and adorably cheesy pickup line like Joey Tribbiani or Barney Stinson would say."
+        prompt = (
+            "Generate one short, funny, dramatic, and adorably cheesy pickup line "
+            "inspired by Joey Tribbiani, Barney Stinson, or Michael Scott. "
+            "It should sound playful, confident, and a little over-the-top — the kind that makes someone laugh and blush."
+        )
     elif "Smooth" in style:
-        prompt = "Generate one short, confident, effortlessly smooth pickup line with charm and style."
+        prompt = (
+            "Generate one short, effortlessly charming, and confident pickup line "
+            "inspired by Barney Stinson, Sam Malone, or Jeff Winger. "
+            "It should feel natural, classy, and delivered with style — suave but never try-hard."
+        )
     elif "Sigma" in style:
-        prompt = "Generate one short, bold, mysterious, high-value sigma-style pickup line."
+        prompt = (
+            "Generate one short, bold, mysterious, and high-value pickup line "
+            "inspired by Dr. Gregory House, James Bond, Raymond Holt, or Harvey Specter. "
+            "It should sound powerful, calm, and self-assured — more of a statement than a plea."
+        )
     else:
         prompt = "Generate one short, funny, confident pickup line."
+
     line = generate_ai_response(prompt, max_tokens=60)
     if line:
-        st.markdown(f'<div class="result-box"><h3>💬 {style} Line</h3><p>{line}</p></div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="result-box"><h3>💬 {style} Line</h3><p>{line}</p></div>',
+            unsafe_allow_html=True,
+        )
+
 
 # --------------------------------
 # Footer
