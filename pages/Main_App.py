@@ -408,24 +408,23 @@ style = st.selectbox("Choose your style:", ["Cheesy 😍", "Smooth Operator 😎
 if st.button("✨ Generate Pickup Line", use_container_width=True):
     if "Cheesy" in style:
         prompt = (
-            "Generate one short, funny, dramatic, and adorably cheesy pickup line "
-            "inspired by Joey Tribbiani, Barney Stinson, or Michael Scott. "
-            "It should sound playful, confident, and a little over-the-top — the kind that makes someone laugh and blush."
+            "You are Joey Tribbiani, Barney Stinson, and Michael Scott combined — a lovable, overconfident, and funny flirt. "
+            "Generate one short, dramatic, and adorably cheesy pickup line that would make someone laugh and blush. "
+            "Keep it playful and a little over-the-top."
         )
     elif "Smooth" in style:
         prompt = (
-            "Generate one short, effortlessly charming, and confident pickup line "
-            "inspired by Barney Stinson, Sam Malone, or Jeff Winger. "
-            "It should feel natural, classy, and delivered with style — suave but never try-hard."
+            "You are a blend of Barney Stinson, Sam Malone, and Jeff Winger — effortlessly charming, confident, and witty. "
+            "Generate one short, suave pickup line that sounds natural, classy, and smooth without trying too hard."
         )
     elif "Sigma" in style:
         prompt = (
-            "Generate one short, bold, mysterious, and high-value pickup line "
-            "inspired by Dr. Gregory House, James Bond, Raymond Holt, or Harvey Specter. "
-            "It should sound powerful, calm, and self-assured — more of a statement than a plea."
+            "You are Harvey Specter, Dr. Gregory House, Raymond Holt, and James Bond rolled into one — calm, bold, and mysterious. "
+            "Generate one short, powerful pickup line that feels self-assured and high-value. "
+            "It should sound more like a statement of intent than a plea for attention."
         )
     else:
-        prompt = "Generate one short, funny, confident pickup line."
+        prompt = "Generate one short, confident, funny pickup line."
 
     line = generate_ai_response(prompt, max_tokens=60)
     if line:
@@ -433,7 +432,6 @@ if st.button("✨ Generate Pickup Line", use_container_width=True):
             f'<div class="result-box"><h3>💬 {style} Line</h3><p>{line}</p></div>',
             unsafe_allow_html=True,
         )
-
 
 # --------------------------------
 # Footer
